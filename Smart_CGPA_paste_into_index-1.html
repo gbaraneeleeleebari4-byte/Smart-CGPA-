@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102b46">
+<title>Smart CGPA | Academic Companion</title>
+<style>
+:root{--navy:#102b46;--blue:#2368a8;--blue2:#eaf3fc;--bg:#f3f6fa;--ink:#172536;--muted:#617286;--line:#dce5ef;--green:#167448;--amber:#a36000;--red:#a83232}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.top{background:linear-gradient(135deg,#102b46,#1e5482);color:white;padding:24px 16px 30px}.wrap{max-width:920px;margin:auto}.brand{font-size:1.55rem;font-weight:850;letter-spacing:.2px;display:flex;align-items:center;gap:10px}.logo{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#ffffff1c;border:1px solid #ffffff40;font-size:1.15rem}.eyebrow{color:#cce1f5;font-size:.83rem;font-weight:700;text-transform:uppercase;letter-spacing:1.1px;margin-top:22px}.top h1{font-size:clamp(1.7rem,5vw,2.4rem);line-height:1.12;margin:7px 0 10px}.top p{color:#e0edf8;margin:0;max-width:650px}.topchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.chip{font-size:.83rem;border:1px solid #ffffff38;background:#ffffff12;border-radius:99px;padding:5px 10px}
+main{max-width:920px;margin:18px auto;padding:0 12px 38px}.card{background:white;border:1px solid var(--line);border-radius:17px;padding:17px;margin-bottom:15px;box-shadow:0 7px 24px #152c4408}.sectionhead{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}.num{flex:0 0 31px;height:31px;border-radius:10px;background:var(--blue2);color:var(--blue);display:grid;place-items:center;font-weight:800}.sectionhead h2{font-size:1.12rem;margin:2px 0 2px}.sub{font-size:.91rem;color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:5px}.field input,.field select{width:100%;min-width:0;padding:11px 10px;border:1px solid #c7d4e2;border-radius:10px;background:white;color:var(--ink)}.field input:focus,.field select:focus,td input:focus,td select:focus{outline:2px solid #83b9eb;border-color:var(--blue)}.btn{border:0;border-radius:10px;padding:11px 14px;font-weight:750}.primary{background:var(--blue);color:white}.secondary{background:#eaf1f8;color:var(--navy)}.outline{background:white;color:var(--blue);border:1px solid #b9cee2}.danger{background:#fff0f0;color:var(--red)}.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:515px}th,td{text-align:left;padding:8px 5px;border-bottom:1px solid var(--line)}th{font-size:.82rem;color:var(--muted)}td input,td select{width:100%;padding:9px 8px;border:1px solid #c7d4e2;border-radius:8px;background:#fff;color:var(--ink)}.remove{border:0;border-radius:8px;padding:8px;background:#fff0f0;color:var(--red);font-weight:750}.helper{font-size:.85rem;color:var(--muted);margin:10px 0 0}.rulebox{background:#f7faff;border:1px solid var(--line);padding:12px;border-radius:12px;margin-top:12px}.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px}.metric{background:#f4f8fc;border:1px solid var(--line);border-radius:13px;padding:13px}.metric span{display:block;color:var(--muted);font-size:.84rem}.metric strong{display:block;color:var(--navy);font-size:1.75rem;line-height:1.3;margin-top:3px;overflow-wrap:anywhere}.feedback{margin-top:13px;padding:14px;border-radius:12px;background:#edf8f1;border-left:4px solid var(--green)}.feedback.encourage{background:#fff7e8;border-left-color:#d18a22}.feedback strong{display:block;margin-bottom:3px}.hidden{display:none!important}.alert{display:none;margin:10px 0;padding:11px;border-radius:10px;background:#fff0f0;color:#8d2424}.notice{background:#fff9e9;border:1px solid #f0dda8;padding:12px;border-radius:12px;font-size:.9rem}.details summary{font-weight:750;cursor:pointer}.details p{color:var(--muted)}.progress{height:8px;background:#e6edf5;border-radius:99px;overflow:hidden;margin-top:9px}.progress div{height:100%;width:0;background:var(--blue);transition:width .2s}.footer{text-align:center;color:var(--muted);font-size:.84rem;padding:10px 15px 25px}.tiny{font-size:.82rem;color:var(--muted)}@media(max-width:420px){.card{padding:14px}.btn{flex:1}.top{padding-top:20px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<div class="brand"><span class="logo">↗</span> Smart CGPA</div>
+<div class="eyebrow">Your academic companion</div>
+<h1>Know your results. Plan your next move.</h1>
+<p>Calculate your semester GPA and cumulative CGPA, check a target, and build better study habits — all in one simple place.</p>
+<div class="topchips"><span class="chip">✓ GPA calculator</span><span class="chip">✓ CGPA tracker</span><span class="chip">✓ Target planner</span></div>
+</div></header>
+<main>
+<section class="card">
+<div class="sectionhead"><span class="num">1</span><div><h2>Choose your grading system</h2><p class="sub">Use your university’s official grade-point rules.</p></div></div>
+<div class="grid">
+<div class="field"><label for="scale">Grading scale</label><select id="scale"><option value="5">5-point scale</option><option value="4">4-point scale</option><option value="custom">Custom grade points</option></select></div>
+<div class="field"><label for="tone">Result message style</label><select id="tone"><option value="warm">Supportive and detailed</option><option value="short">Short and simple</option></select></div>
+</div>
+<div class="rulebox"><b>Grade-point settings</b><p class="sub">Edit the points to match your school. Letter-grade boundaries and degree classifications differ between universities.</p><div id="gradeSettings" class="grid" style="margin-top:10px"></div></div>
+</section>
+
+<section class="card">
+<div class="sectionhead"><span class="num">2</span><div><h2>Enter your current semester courses</h2><p class="sub">Add each course, credit unit and grade from your result sheet.</p></div></div>
+<div id="error" class="alert" role="alert"></div>
+<div class="tablewrap"><table><thead><tr><th>Course name/code</th><th>Credit units</th><th>Grade</th><th>Remove</th></tr></thead><tbody id="courses"></tbody></table></div>
+<div class="btnrow"><button type="button" class="btn secondary" id="add">＋ Add course</button><button type="button" class="btn primary" id="calc">Calculate results</button><button type="button" class="btn outline" id="clear">Clear courses</button></div>
+<p class="helper">Tip: 3-unit and 4-unit courses affect your GPA differently. Enter the correct credit units for every course.</p>
+</section>
+
+<section class="card">
+<div class="sectionhead"><span class="num">3</span><div><h2>Add your previous results</h2><p class="sub">Optional — needed to calculate an updated CGPA after earlier semesters.</p></div></div>
+<div class="grid">
+<div class="field"><label for="oldCgpa">Previous CGPA</label><input id="oldCgpa" type="number" min="0" step="0.01" placeholder="e.g. 3.42"></div>
+<div class="field"><label for="oldUnits">Previous completed credit units</label><input id="oldUnits" type="number" min="0" step="1" placeholder="e.g. 36"></div>
+</div>
+<p class="helper">For your first semester, leave both blank. If entering a previous CGPA, fill in both fields. The updated result is an estimate if your old CGPA was rounded.</p>
+</section>
+
+<section id="results" class="card hidden" aria-live="polite">
+<div class="sectionhead"><span class="num">✓</span><div><h2>Your academic snapshot</h2><p class="sub">Here is what your entered grades calculate to.</p></div></div>
+<div class="results">
+<div class="metric"><span>Semester GPA</span><strong id="gpa">—</strong></div>
+<div class="metric"><span>Updated CGPA</span><strong id="cgpa">—</strong></div>
+<div class="metric"><span>Semester units</span><strong id="units">—</strong></div>
+<div class="metric"><span>Grade points earned</span><strong id="points">—</strong></div>
+</div>
+<div id="feedback" class="feedback"><strong>Keep going</strong><span></span></div>
+<div class="btnrow"><button type="button" class="btn primary" id="improve">Help me improve my CGPA</button><button type="button" class="btn secondary" id="edit">Edit my entries</button></div>
+</section>
+
+<section id="planner" class="card hidden">
+<div class="sectionhead"><span class="num">4</span><div><h2>Plan your target CGPA</h2><p class="sub">Estimate the average GPA you would need across your remaining credit units.</p></div></div>
+<div class="grid">
+<div class="field"><label for="target">Target CGPA</label><input id="target" type="number" min="0" step=".01" placeholder="e.g. 4.00"></div>
+<div class="field"><label for="remaining">Remaining credit units</label><input id="remaining" type="number" min="1" step="1" placeholder="e.g. 48"></div>
+</div>
+<div class="btnrow"><button type="button" class="btn primary" id="estimate">Estimate required GPA</button></div>
+<div id="targetOutput" class="feedback hidden" aria-live="polite"></div>
+<div class="rulebox"><b>A realistic weekly study reset</b><ul><li>Write down your next tests and assignment deadlines.</li><li>Start with the topics you find most difficult, in short focused sessions.</li><li>Practise questions from memory before checking notes.</li><li>Review every mistake and ask for help on topics you cannot explain.</li><li>Begin revision early and get enough rest.</li></ul><p class="sub">A disappointing result is information you can learn from, not a judgement of your ability.</p></div>
+</section>
+
+<section class="card details"><details><summary>How are GPA and CGPA calculated?</summary><p><b>Semester GPA</b> = total of (each course’s grade point × its credit units) ÷ total semester credit units.</p><p><b>Updated CGPA</b> = (previous CGPA × previous completed units + current semester grade points) ÷ (previous completed units + current semester units).</p><p>Smart CGPA uses the grade points you set above. It does not know your university’s official rules unless you enter them correctly.</p></details></section>
+<div class="notice"><b>Important:</b> Smart CGPA is a study tool, not an official academic record. Confirm your grading scale and credit units with your department before relying on the result.</div>
+</main>
+<footer class="footer">Smart CGPA · Calculate clearly. Learn consistently. Keep improving.</footer>
+<script>
+const presets={
+ "5":[["A",5],["B",4],["C",3],["D",2],["E",1],["F",0]],
+ "4":[["A",4],["B",3],["C",2],["D",1],["F",0]],
+ "custom":[["A",5],["B",4],["C",3],["D",2],["E",1],["F",0]]
+};
+const $=id=>document.getElementById(id);let gradePoints={};let lastResult=null;
+function showError(text){$("error").textContent=text;$("error").style.display="block"}
+function clearError(){$("error").textContent="";$("error").style.display="none"}
+function buildGradeSettings(){gradePoints={};$("gradeSettings").innerHTML="";presets[$("scale").value].forEach(([grade,point])=>{gradePoints[grade]=point;let box=document.createElement("div");box.className="field";let label=document.createElement("label");label.textContent=grade+" grade point";let input=document.createElement("input");input.type="number";input.min="0";input.step=".1";input.value=point;input.dataset.grade=grade;input.addEventListener("input",()=>{gradePoints[grade]=Number(input.value);refreshGradeSelects()});box.append(label,input);$("gradeSettings").append(box)});refreshGradeSelects()}
+function refreshGradeSelects(){document.querySelectorAll(".grade-select").forEach(sel=>{let old=sel.value;sel.innerHTML="";Object.keys(gradePoints).forEach(g=>{let opt=document.createElement("option");opt.value=g;opt.textContent=g+" ("+gradePoints[g]+" points)";sel.append(opt)});if(gradePoints[old]!==undefined)sel.value=old})}
+function addCourse(name="",units=3,grade="A"){let row=document.createElement("tr"),nameCell=document.createElement("td"),unitCell=document.createElement("td"),gradeCell=document.createElement("td"),removeCell=document.createElement("td");let nameInput=document.createElement("input");nameInput.placeholder="e.g. BIO 101";nameInput.value=name;nameInput.setAttribute("aria-label","Course name");let unitInput=document.createElement("input");unitInput.type="number";unitInput.min="1";unitInput.step="1";unitInput.value=units;unitInput.setAttribute("aria-label","Credit units");let select=document.createElement("select");select.className="grade-select";select.setAttribute("aria-label","Grade");let remove=document.createElement("button");remove.type="button";remove.className="remove";remove.textContent="×";remove.setAttribute("aria-label","Remove course");remove.onclick=()=>row.remove();nameCell.append(nameInput);unitCell.append(unitInput);gradeCell.append(select);removeCell.append(remove);row.append(nameCell,unitCell,gradeCell,removeCell);$("courses").append(row);refreshGradeSelects();if(gradePoints[grade]!==undefined)select.value=grade}
+function fmt(n){return Number(n).toFixed(2)}
+function calculate(){clearError();const rows=[...$("courses").querySelectorAll("tr")];if(!rows.length){showError("Add at least one course before calculating.");return}let totalUnits=0,totalPoints=0;for(let i=0;i<rows.length;i++){let row=rows[i],inputs=row.querySelectorAll("input"),name=inputs[0].value.trim(),units=Number(inputs[1].value),grade=row.querySelector("select").value;if(!name){showError("Please enter a course name or code for every row.");inputs[0].focus();return}if(!Number.isInteger(units)||units<=0){showError("Credit units must be a positive whole number.");inputs[1].focus();return}if(!Object.prototype.hasOwnProperty.call(gradePoints,grade)||!Number.isFinite(Number(gradePoints[grade]))||Number(gradePoints[grade])<0){showError("Please check the grade-point settings and every course grade.");return}totalUnits+=units;totalPoints+=units*Number(gradePoints[grade])}
+let max=Math.max(...Object.values(gradePoints).map(Number));if(!Number.isFinite(max)||max<=0){showError("The maximum grade point must be greater than zero.");return}let gpa=totalPoints/totalUnits,oldCG=$("oldCgpa").value.trim(),oldUnitsText=$("oldUnits").value.trim(),cgpa=gpa,allUnits=totalUnits;
+if(oldCG!==""||oldUnitsText!==""){let old=Number(oldCG),oldUnits=Number(oldUnitsText);if(oldCG===""||oldUnitsText===""||!Number.isFinite(old)||!Number.isInteger(oldUnits)||old<0||old>max||oldUnits<0){showError("Enter both a valid previous CGPA (0 to "+max+") and completed units (0 or more), or leave both blank.");return}allUnits=oldUnits+totalUnits;cgpa=allUnits>0?(old*oldUnits+totalPoints)/allUnits:gpa}
+$("gpa").textContent=fmt(gpa);$("cgpa").textContent=fmt(cgpa);$("units").textContent=totalUnits;$("points").textContent=fmt(totalPoints);let f=$("feedback");f.className="feedback";let title="",body="";
+if(gpa>=max*.8){title="Excellent results, keep up the good work.";body=$("tone").value==="short"?"Great work. Keep it up!":"Your consistency is paying off. Keep practising and repeat the study habits that helped you succeed."}
+else if(gpa>=max*.6){title="You’re making progress.";body=$("tone").value==="short"?"Keep learning and improving.":"Review the courses where you lost marks and make a focused plan for your next assessment."}
+else{f.className="feedback encourage";title="Put more effort in, you will get there.";body=$("tone").value==="short"?"One result doesn't define you. You can improve.":"One result does not define your ability. Start with the hardest topics, practise a little each day, and ask for help early."}
+f.innerHTML="";let strong=document.createElement("strong"),span=document.createElement("span");strong.textContent=title;span.textContent=body;f.append(strong,span);$("results").classList.remove("hidden");$("planner").classList.add("hidden");$("targetOutput").classList.add("hidden");lastResult={gpa,cgpa,totalUnits:allUnits,max};$("results").scrollIntoView({behavior:"smooth",block:"start"})}
+function estimate(){if(!lastResult){showError("Calculate your results first.");return}let tText=$("target").value.trim(),rText=$("remaining").value.trim(),t=Number(tText),r=Number(rText),o=$("targetOutput");if(tText===""||rText===""||!Number.isFinite(t)||!Number.isInteger(r)||r<=0||t<0||t>lastResult.max){o.className="feedback encourage";o.textContent="Enter a target between 0 and "+lastResult.max+" and a positive whole number of remaining credit units.";return}let required=(t*(lastResult.totalUnits+r)-lastResult.cgpa*lastResult.totalUnits)/r;o.className="feedback";if(required>lastResult.max){o.className="feedback encourage";o.textContent="That target is not mathematically reachable using the entered remaining units. It would require an average GPA of "+fmt(required)+", above the scale maximum of "+fmt(lastResult.max)+". Consider a nearer target or check your credit units."}else if(required<=0){o.textContent="Based on the figures entered, your target is already mathematically secured, provided future grades do not lower it. Keep working steadily."}else{o.textContent="To reach a CGPA of "+fmt(t)+", you would need an average GPA of about "+fmt(required)+" over your next "+r+" credit units. This is an estimate, not a guarantee."}}
+$("scale").addEventListener("change",()=>{buildGradeSettings();$("courses").innerHTML="";for(let i=0;i<4;i++)addCourse();$("results").classList.add("hidden");$("planner").classList.add("hidden");clearError()});
+$("add").addEventListener("click",()=>addCourse());$("calc").addEventListener("click",calculate);$("clear").addEventListener("click",()=>{if(confirm("Clear all course rows?")){$("courses").innerHTML="";for(let i=0;i<4;i++)addCourse();$("results").classList.add("hidden");$("planner").classList.add("hidden");clearError()}});
+$("improve").addEventListener("click",()=>{$("planner").classList.remove("hidden");$("planner").scrollIntoView({behavior:"smooth",block:"start"})});$("edit").addEventListener("click",()=>document.querySelector("#courses").scrollIntoView({behavior:"smooth",block:"start"}));$("estimate").addEventListener("click",estimate);
+buildGradeSettings();for(let i=0;i<4;i++)addCourse();
+</script>
+</body></html>
