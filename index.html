@@ -435,6 +435,64 @@ footer {
   .header-inner { align-items: flex-start; }
   .header-actions button { padding: 8px; }
 }
+/* SMART CGPA: MOBILE APP NAVIGATION */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+  padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.bottom-nav button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 12px;
+  padding: 7px 2px;
+  min-width: 0;
+  font-size: 11px;
+  font-weight: 650;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.bottom-nav button .nav-icon {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.bottom-nav button.active {
+  background: var(--bg);
+  color: var(--primary);
+}
+
+body {
+  padding-bottom: 85px;
+}
+
+@media (min-width: 900px) {
+  .bottom-nav {
+    left: 50%;
+    right: auto;
+    width: min(600px, 90%);
+    transform: translateX(-50%);
+    bottom: 16px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+  }
+}
 </style>
 </head>
 
