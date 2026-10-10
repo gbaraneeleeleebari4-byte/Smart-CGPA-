@@ -1341,9 +1341,9 @@ function showPage(name) {
     page.classList.toggle("active", page.id === name);
   });
 
-  document.querySelectorAll(".nav button").forEach(button => {
-    button.classList.toggle("active", button.dataset.page === name);
-  });
+  document.querySelectorAll("[data-page]").forEach(button => {
+  button.classList.toggle("active", button.dataset.page === name);
+});
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
