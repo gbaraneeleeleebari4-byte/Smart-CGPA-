@@ -9,6 +9,50 @@
 <meta name="description" content="Smart CGPA is your personal academic companion for calculating grades, planning study sessions, and tracking academic progress.">
 <title>Smart CGPA | Academic Companion</title>
 
+/* Smart CGPA performance chart */
+.performance-chart {
+  width: 100%;
+  min-width: 0;
+  margin-top: 12px;
+}
+
+.performance-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.performance-chart .chart-grid {
+  stroke: var(--border);
+  stroke-dasharray: 4 4;
+}
+
+.performance-chart .chart-line {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.performance-chart .chart-point {
+  fill: var(--primary);
+  stroke: var(--card);
+  stroke-width: 2;
+}
+
+.performance-chart .chart-label {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.chart-note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 8px;
+}
+
 <style>
 :root {
   --bg: #f3f6fb;
@@ -584,6 +628,22 @@ body {
         <h3>Recent semesters</h3>
         <div id="recentSemesters"></div>
       </article>
+
+<article class="card span-12">
+  <h3>Academic performance</h3>
+  <p class="small">
+    Track your results across recorded semesters.
+  </p>
+  <div id="performanceChart" class="performance-chart">
+    <div class="empty">
+      Your performance chart will appear after you record results.
+    </div>
+  </div>
+  <p class="chart-note">
+    Results are shown as a percentage of each semester's grading scale,
+    so different grading scales can be compared more fairly.
+  </p>
+</article>
 
     </div>
   </section>
@@ -1330,10 +1390,156 @@ function renderHistory() {
   });
 }
 
+function renderPerformanceChart() {
+  const container = $("performanceChart");
+  if (!container) return;
+
+  container.replaceChildren();
+
+  const data = records
+    .filter(record =>
+      Number.isFinite(Number(record.cgpa)) &&
+      Number.isFinite(Number(record.scale)) &&
+      Number(record.scale) > 0 &&
+      Number(record.cgpa) >= 0 &&
+      Number(record.cgpa) <= Number(record.scale)
+    )
+    .slice(-8);
+
+  if (!data.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent =
+      "Record a semester to start tracking your academic performance.";
+    container.appendChild(empty);
+    return;
+  }
+
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("viewBox", "0 0 700 260");
+  svg.setAttribute("role", "img");
+  svg.setAttribute(
+    "aria-label",
+    "Academic performance across your latest recorded semesters"
+  );
+
+  const left = 48;
+  const right = 680;
+  const top = 24;
+  const bottom = 202;
+  const plotHeight = bottom - top;
+  const plotWidth = right - left;
+
+  function addElement(tag, attrs, textContent) {
+    const el = document.createElementNS(ns, tag);
+
+    Object.entries(attrs).forEach(([key, value]) => {
+      el.setAttribute(key, String(value));
+    });
+
+    if (textContent !== undefined) {
+      el.textContent = textContent;
+    }
+
+    svg.appendChild(el);
+    return el;
+  }
+
+  [0, 50, 100].forEach(percent => {
+    const y = bottom - (percent / 100) * plotHeight;
+
+    addElement("line", {
+      x1: left,
+      y1: y,
+      x2: right,
+      y2: y,
+      class: "chart-grid"
+    });
+
+    addElement("text", {
+      x: left - 9,
+      y: y + 4,
+      "text-anchor": "end",
+      class: "chart-label"
+    }, `${percent}%`);
+  });
+
+  const points = data.map((record, index) => {
+    const x = data.length === 1
+      ? (left + right) / 2
+      : left + (index / (data.length - 1)) * plotWidth;
+
+    const percentage =
+      (Number(record.cgpa) / Number(record.scale)) * 100;
+
+    const y = bottom - (percentage / 100) * plotHeight;
+
+    return { x, y, percentage, record };
+  });
+
+  if (points.length > 1) {
+    addElement("polyline", {
+      points: points.map(p => `${p.x},${p.y}`).join(" "),
+      class: "chart-line"
+    });
+  }
+
+  points.forEach(point => {
+    const circle = addElement("circle", {
+      cx: point.x,
+      cy: point.y,
+      r: 5,
+      class: "chart-point"
+    });
+
+    const title = document.createElementNS(ns, "title");
+    title.textContent =
+      `${point.record.name}: ${Number(point.record.cgpa).toFixed(2)} / ` +
+      `${Number(point.record.scale).toFixed(0)} ` +
+      `(${point.percentage.toFixed(1)}% of scale)`;
+
+    circle.appendChild(title);
+  });
+
+  const labelPoints = points.length > 5
+    ? points.filter((point, index) =>
+        index === 0 ||
+        index === points.length - 1 ||
+        index % 2 === 0
+      )
+    : points;
+
+  labelPoints.forEach(point => {
+    let name = String(point.record.name || "Semester");
+
+    if (name.length > 13) {
+      name = name.slice(0, 12) + "…";
+    }
+
+    addElement("text", {
+      x: point.x,
+      y: bottom + 23,
+      "text-anchor": "middle",
+      class: "chart-label"
+    }, name);
+  });
+
+  container.appendChild(svg);
+}
+
 function renderAll() {
   renderDashboard();
   renderHistory();
   renderTasks();
+  renderPerformanceChart();
+}
+
+function renderAll() {
+  renderDashboard();
+  renderHistory();
+  renderTasks();
+  renderPerformanceChart();
 }
 
 function showPage(name) {
